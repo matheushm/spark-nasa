@@ -1,7 +1,5 @@
 # HTTP requests to the NASA Kennedy Space Center WWW server
 
----
-
 Esse teste de Engenharia de Dados consiste em realizar a leitura de dois datasets de todas as requisições HTTP para o servidor da NASA Kennedy
 Space Center WWW na Flórida para um período específico (Julho e Agosto de 1995) e responder questões específicas utilizando Spark e Python.
 
@@ -16,7 +14,6 @@ Space Center WWW na Flórida para um período específico (Julho e Agosto de 199
 
 ## Dataset
 
----
 Dataset consiste de todas as requisições HTTP para o servidor da NASA Kennedy
 Space Center WWW na Flórida.
 
@@ -37,8 +34,6 @@ Logs estão em formato ASCII com uma linha por requisição com as seguintes col
 
 ## Requisitos
 
----
-
 O projeto é desenvolvido em Spark e Python e ambos deverão estar instalados e configurados no ambiente de sua preferência. Links para download e instalação:
 
 Apache Spark: <https://spark.apache.org/downloads.html>
@@ -47,8 +42,6 @@ Anaconda Python (recomendado): <https://www.anaconda.com/distribution/>
 Um guia completo de instalação e configuração para o Windows pode ser encontrado no link: <https://towardsdatascience.com/installing-apache-pyspark-on-windows-10-f5f0c506bea1>
 
 ## Execução
-
----
 
 Para rodar o script, é necessário que os dataset estejam em uma pasta do diretório. O nome default da pasta é **nasa-data**.
 
@@ -64,15 +57,15 @@ O exemplo do arquivo de saída para os meses de Julho-1995 e Agosto-1995 está d
 
 Dados retirados do arquivo de saída *nasa_data_output.txt*
 
-##### 1. Número de hosts únicos
+**1. Número de hosts únicos**
 ```
 137978
 ```
-##### 2. Total de Erros 404
+**2. Total de Erros 404**
 ```
 20901
 ```
-##### 3. As 5 URLs que mais causaram erro 404
+**3. As 5 URLs que mais causaram erro 404**
 ```
 ts8-1.westwood.ts.ucla.edu/images/Nasa-logo.gif
 nexus.mlckew.edu.au/images/nasa-logo.gif
@@ -80,7 +73,7 @@ nexus.mlckew.edu.au/images/nasa-logo.gif
 203.13.168.17/images/nasa-logo.gif
 onramp2-9.onr.com/images/nasa-logo.gif
 ```
-##### 4. Quantidade de Erros 404 por dia
+**4. Quantidade de Erros 404 por dia**
 ```
    date                 errors_404              
 1995-07-01                316                     
@@ -142,7 +135,7 @@ onramp2-9.onr.com/images/nasa-logo.gif
 1995-08-30                571                     
 1995-08-31                526
 ```
-##### 5. Total de bytes retornados
+**5. Total de bytes retornados**
 ```
 61.02 Gb
 ```
@@ -150,27 +143,27 @@ onramp2-9.onr.com/images/nasa-logo.gif
 
 ---
 
-##### 1. Qual o objetivo do comando cache em Spark?
+**1. Qual o objetivo do comando cache em Spark?**
 ```
 
 ```
-##### 2. O mesmo código implementado em Spark é normalmente mais rápido que a implementação equivalente em MapReduce. Por quê?
+**2. O mesmo código implementado em Spark é normalmente mais rápido que a implementação equivalente em MapReduce. Por quê?**
 ```
 
 ```
-##### 3. Qual é a função do SparkContext?
+**3. Qual é a função do SparkContext?**
 ```
 
 ```
-##### 4. Explique com suas palavras o que é Resilient Distributed Datasets (RDD)
+**4. Explique com suas palavras o que é Resilient Distributed Datasets (RDD)**
 ```
 
 ```
-##### 5. GroupByKey é menos eficiente que reduceByKey em grandes dataset. Por quê?
+**5. GroupByKey é menos eficiente que reduceByKey em grandes dataset. Por quê?**
 ```
 
 ```
-##### 6. Explique o que o código Scala abaixo faz:
+**6. Explique o que o código Scala abaixo faz:**
 ```
 val textFile = sc.textFile("hdfs://...")
 val counts = textFile.flatMap(line => line.split(" "))
