@@ -140,17 +140,15 @@ onramp2-9.onr.com/images/nasa-logo.gif
 ```
 ## Questões Teóricas
 
----
-
 **1. Qual o objetivo do comando cache em Spark?**
-```
+
 O comando cache() promove a persistência do RDD - Resilient Distributed Datasets em memória. Se trata de uma técnica de 
 otimização que salva resultados intermediários na memória para promover a reutilização em próximos passos, portanto, só faria
 sentido em casos onde o conjunto de dados será lido mais de uma vez e que o custo de alocar mais dados na memória é melhor 
 que o custo de recomputação dos dados.
-```
+
 **2. O mesmo código implementado em Spark é normalmente mais rápido que a implementação equivalente em MapReduce. Por quê?**
-```
+
 Alguns motivos podem ser elencados:
 1. Com relação ao processamento, o Spark o realiza na memória enquanto o MapReduce precisa das operações I/O com o disco, o
 que torna esse processamento mais lento.
@@ -158,25 +156,25 @@ que torna esse processamento mais lento.
 tarefa e só efetiva realiza as operações quando necessário (Lazy Evaluation) 
 3. O Spark utiliza o conceito de RDD, que em sua essência é uma coleção de objetos que pode ser computados em nodes paralelos
 e armazenado em memória.
-```
+
 **3. Qual é a função do SparkContext?**
-```
+
 O SparkContext é um cliente central da aplicação Spark que representa a conexão com o cluster Spark e dá acesso às
 funcionalidades e recursos do Spark. Só pode existir um SparkContext por JVM que pode estar ligado a uma ou mais SparkSession.
-```
+
 **4. Explique com suas palavras o que é Resilient Distributed Datasets (RDD)**
-```
+
 RDD - Resilient Distributed Datasets - é a estrutura fundamental de dados do Spark. Essencialmente, é uma coleção distribuída
 de objetos que pode ser computada em paralelo. São estruturas imutáveis que podem ser criadas paralelizando uma coleção 
 diretamente ou referenciando um dataset.
-```
+
 **5. GroupByKey é menos eficiente que reduceByKey em grandes dataset. Por quê?**
-```
+
 O reduceByKey agrupa os valores da keys de cada máquina antes de realizar o shuffle. Já o GroupByKey realiza o shuffle com
 todos os pares key-value antes de agrupá-los. Sendo assim, o GroupByKey transfere mais dados pela rede antes de computar o
 resultado final. Sabendo que a rede é um gargalo maior no processo do que a CPU e a memória, geralmente o GroupByKey será mais
 lento.
-```
+
 **6. Explique o que o código Scala abaixo faz:**
 ```
 val textFile = sc.textFile("hdfs://...")
@@ -185,10 +183,9 @@ val counts = textFile.flatMap(line => line.split(" "))
                      .reduceByKey (_+_)
 counts.saveAsTextFile ("hdfs://...")
 ```
-```
+
 O SparkContext (sc) realiza a leitura de um HDFS (Hadoop File Distributed System) e cria um RDD chamado textFile. Em seguida,
 aplica-se o método flatMap com a função de quebra do elemento por espaço, ou seja, um elemento será quebrado em n elementos a
 partir do resultado do split. Em seguida, aplica-se um método de map para criação de uma tuple (pares key, value) sendo 
 atribuído o valor 1 para cada chave (word). Em seguida, aplica-se o método de reduceByKey para agrupar em somatória os pares
 key-value. Finalmente, a ação saveAsTextFile irá executar as tasks e salvar a coleção no mesmo formato distribuído HDFS.
-```
